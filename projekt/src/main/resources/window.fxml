@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.controller.Window">
   <columnConstraints>
       <ColumnConstraints />
       <ColumnConstraints maxWidth="147.0" minWidth="14.0" prefWidth="138.0" />
@@ -27,26 +27,26 @@
       <Line endX="300.0" scaleY="2.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
       <Line endY="250.0" scaleX="2.0" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
       <Line endY="250.0" scaleX="2.0" GridPane.columnIndex="4" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="2" />
-       <Circle fill="#ffffff00"  radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" GridPane.columnIndex="2" />
-       <Circle fill="#ffffff00"  layoutX="178.0" layoutY="81.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" GridPane.columnIndex="3" />
-       <Circle fill="#ffffff00"  layoutX="275.0" layoutY="81.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" GridPane.columnIndex="4" />
-       <Circle fill="#ffffff00"  radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-       <Circle fill="#ffffff00"  layoutX="178.0" layoutY="186.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-       <Circle fill="#ffffff00"  layoutX="275.0" layoutY="186.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-       <Circle fill="#ffffff00"  layoutX="377.0" layoutY="186.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-       <Circle fill="#ffffff00"  layoutX="178.0" layoutY="265.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-       <Circle fill="#ffffff00"  layoutX="275.0" layoutY="265.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+       <Circle fx:id="c00" fill="#ffffff00" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" GridPane.columnIndex="2" />
+       <Circle fx:id="c01" fill="#ffffff00" layoutX="178.0" layoutY="81.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" GridPane.columnIndex="3" />
+       <Circle fx:id="c02" fill="#ffffff00" layoutX="275.0" layoutY="81.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" GridPane.columnIndex="4" />
+       <Circle fx:id="c10" fill="#ffffff00" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+       <Circle fx:id="c11" fill="#ffffff00" layoutX="178.0" layoutY="186.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+       <Circle fx:id="c12" fill="#ffffff00" layoutX="275.0" layoutY="186.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+       <Circle fx:id="c20" fill="#ffffff00" layoutX="377.0" layoutY="186.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+       <Circle fx:id="c21" fill="#ffffff00" layoutX="178.0" layoutY="265.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+       <Circle fx:id="c22" fill="#ffffff00" layoutX="275.0" layoutY="265.0" radius="30.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
 
 
 
-       <Rectangle fill="#ffffff00" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" width="60.0" GridPane.columnIndex="2" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="178.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" width="60.0" GridPane.columnIndex="3" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="275.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" width="60.0" GridPane.columnIndex="4" />
-       <Rectangle fill="#ffffff00"  height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="178.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="275.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="377.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="178.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-       <Rectangle fill="#ffffff00"  height="60.0" layoutX="275.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
+       <Rectangle fx:id="r00" fill="#ffffff00" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" width="60.0" GridPane.columnIndex="2" />
+       <Rectangle fx:id="r01" fill="#ffffff00" height="60.0" layoutX="178.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" width="60.0" GridPane.columnIndex="3" />
+       <Rectangle fx:id="r02" fill="#ffffff00" height="60.0" layoutX="275.0" layoutY="81.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="65.0" width="60.0" GridPane.columnIndex="4" />
+       <Rectangle fx:id="r10" fill="#ffffff00" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+       <Rectangle fx:id="r11" fill="#ffffff00" height="60.0" layoutX="178.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+       <Rectangle fx:id="r12" fill="#ffffff00" height="60.0" layoutX="275.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+       <Rectangle fx:id="r20" fill="#ffffff00" height="60.0" layoutX="377.0" layoutY="186.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+       <Rectangle fx:id="r21" fill="#ffffff00" height="60.0" layoutX="178.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+       <Rectangle fx:id="r22" fill="#ffffff00" height="60.0" layoutX="275.0" layoutY="265.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" translateX="20.0" translateY="40.0" width="60.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
    </children>
 </GridPane>
