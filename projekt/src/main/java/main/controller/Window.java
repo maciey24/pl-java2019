@@ -6,6 +6,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
 import main.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +36,9 @@ public class Window {
     GridPane gridpane = new GridPane();
 
     @FXML
+    Text text;
+
+    @FXML
     Circle c00, c01, c02,
             c10, c11, c12,
             c20, c21, c22;
@@ -53,6 +57,7 @@ public class Window {
         System.out.println("Window init");
         addAll();
         hideAll(shapes);
+        text.setVisible(false);
         gridpane.addEventHandler(MouseEvent.MOUSE_PRESSED, e -> {
             Coord x = new Coord(e.getX());
             Coord y = new Coord(e.getY());
@@ -159,5 +164,9 @@ public class Window {
             this.rectangles.get(i).get(j).setVisible(true);
     }
 
+    public void printWinner(String string) {
+        this.text.setText(string);
+        this.text.setVisible(true);
+    }
 }
 

@@ -62,6 +62,7 @@ public class Game {
         Shape result = this.ticTacToeRule.checkWhoWon(board);
         if (result != null) {
             System.out.println("WINNER: " + result.getClass().getSimpleName());
+            window.printWinner("WINNER: " + result.getClass().getSimpleName());
             this.turn = null;
         }
     }
