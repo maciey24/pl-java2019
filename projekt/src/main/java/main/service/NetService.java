@@ -25,7 +25,7 @@ public class NetService {
     public static void sendMove(GridIndex gridIndex) {
         try {
             URL url = null;
-            url = new URL("http://localhost:8080/putElement");
+            url = new URL("http://localhost:8081/putElement");
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             con.setRequestMethod("GET");
             Map<String, String> parameters = new HashMap<>();
@@ -38,7 +38,8 @@ public class NetService {
             out.writeBytes(ParameterStringBuilder.getParamsString(parameters));
             out.flush();
             out.close();
-            con.connect();
+            int status = con.getResponseCode();
+            con.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (ProtocolException e) {
