@@ -9,10 +9,14 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class Player {
-    final private Turn playerSign;
+    private Turn playerSign;
 
     public Player() {
         playerSign = Turn.CIRCLE;
+    }
+
+    public Player(Turn playerSign) {
+        this.playerSign = playerSign;
     }
 
     public <T extends Shape> T getPlayersShape() {
@@ -37,7 +41,7 @@ public class Player {
 
     public void checkIfCanPutElement(Turn turn) throws CannotPutElementException {
         if (turn == null) throw new CannotPutElementException("the game is over already");
-        if(!turn.equals(playerSign)) throw new CannotPutElementException("it's not your turn!");
+        if (!turn.equals(playerSign)) throw new CannotPutElementException("it's not your turn!");
     }
 
 }

@@ -22,6 +22,9 @@ public class NetService {
     @Autowired
     Game game;
 
+    //wiem ze to brzydka funkcja, i powinna opierac sie na konfiguracji
+    // najlepiej wczytanej z xmla
+    //
     public static void sendMove(GridIndex gridIndex) {
         try {
             URL url = null;

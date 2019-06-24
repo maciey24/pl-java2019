@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 @Controller
 public class Window {
+    //wiem ze to brzydki hardcoding - zapisane granice wspolrzednych na ktore reaguje klikniecie
     public static final double firstColumnCoord1 = 140.0;
     public static final double firstColumnCoord2 = 233.0;
     public static final double secondColumnCoord1 = 237.0;
@@ -157,7 +158,7 @@ public class Window {
         this.rectangles.get(i).get(j).setVisible(true);
     }
 
-    public <T extends Shape> void update(int i, int j, T element) {
+    public <T extends Shape> void update(int i, int j, Shape element) {
         if (element instanceof Circle)
             this.circles.get(i).get(j).setVisible(true);
         else if (element instanceof Rectangle)

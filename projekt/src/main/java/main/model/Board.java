@@ -13,7 +13,7 @@ public class Board {
         this.window = window;
     }
 
-    private  <T extends Shape> void setElement(int i, int j, T element) {
+    private <T extends Shape> void setElement(int i, int j, T element) {
         this.array[i][j] = element;
         //observer notify
         window.update(i, j, element);
@@ -28,7 +28,7 @@ public class Board {
             throw new CannotPutElementException("place is already taken");
     }
 
-    public  <T extends Shape> void setElement(GridIndex gridIndex, T toChange) {
+    public <T extends Shape> void setElement(GridIndex gridIndex, T toChange) {
         this.setElement(gridIndex.getI(), gridIndex.getJ(), toChange);
     }
 }
