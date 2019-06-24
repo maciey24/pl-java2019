@@ -5,6 +5,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import lombok.Data;
 import main.controller.Window;
+import main.service.NetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -41,7 +42,12 @@ public class Game {
     }
 
     private <T extends Shape> T getItemForPlayer() {
-        return (T) player.getPlayersShape(turn);
+        //for offline debug pass turn
+        return (T) player.getPlayersShape();
+    }
+
+    private Shape getItemForOpponent() {
+        return player.getOpponentShape();
     }
 
     public <T extends Shape> void putItemOnBoard(Coord x, Coord y) {
@@ -53,6 +59,7 @@ public class Game {
             board.setElement(gridIndex, toPut);
             checkWinCondition();
             switchTurn();
+            NetService.sendMove(gridIndex);
         } catch (CannotPutElementException e) {
             System.out.println(e.getMessage());
         }
@@ -66,4 +73,12 @@ public class Game {
             this.turn = null;
         }
     }
+
+    public void putOpponentElement(GridIndex gridIndex) {
+        Shape toPut = getItemForOpponent();
+        board.setElement(gridIndex, toPut);
+        checkWinCondition();
+        switchTurn();
+    }
+
 }

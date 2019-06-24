@@ -28,7 +28,7 @@ public class Board {
             throw new CannotPutElementException("place is already taken");
     }
 
-    public  <T extends Shape> void setElement(GridIndex gridIndex, T toChange) throws CannotPutElementException {
+    public  <T extends Shape> void setElement(GridIndex gridIndex, T toChange) {
         this.setElement(gridIndex.getI(), gridIndex.getJ(), toChange);
     }
 }
