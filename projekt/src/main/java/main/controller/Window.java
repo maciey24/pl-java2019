@@ -6,12 +6,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import main.model.Coord;
-import main.model.Game;
-import main.model.GridIndex;
-import main.model.Turn;
+import main.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
+import org.w3c.dom.css.Rect;
 
 import java.util.ArrayList;
 
@@ -58,41 +57,11 @@ public class Window {
             Coord x = new Coord(e.getX());
             Coord y = new Coord(e.getY());
             System.out.println("x: " + x + "y: " + y);
-            showItem(x, y);
+            game.putItemOnBoard(x, y);
         });
-//        x: 140.0 y: 97.0
-//        x: 233.0 y: 172.0
     }
 
-    private void showItem(Coord x, Coord y) {
-        try {
-            Shape toChange =  getItemForCoords(x, y);
-            toChange.setVisible(true);
-            game.setElement(getGridIndex(x, y), toChange);
-            game.switchTurn();
-        } catch (CannotPlaceElementException e) {
-            System.out.println(e.getMessage());
-        }
-    }
-
-    private Shape getItemForCoords(Coord x, Coord y) throws CannotPlaceElementException {
-        Turn actualTurn = game.getTurn();
-        GridIndex gridIndex = getGridIndex(x, y);
-        return getItemForTurn(actualTurn, gridIndex);
-    }
-
-    private Shape getItemForTurn(Turn actualTurn, GridIndex gridIndex) throws CannotPlaceElementException {
-        checkIfOccupied(gridIndex);
-        if (actualTurn.equals(Turn.CIRCLE)) return circles.get(gridIndex.getI()).get(gridIndex.getJ());
-        else return rectangles.get(gridIndex.getI()).get(gridIndex.getJ());
-    }
-
-    private void checkIfOccupied(GridIndex gridIndex) throws CannotPlaceElementException {
-        if(game.getElement(gridIndex.getI(), gridIndex.getJ()) !=null )
-            throw new CannotPlaceElementException("place is already taken");
-    }
-
-    private GridIndex getGridIndex(Coord x, Coord y) throws CannotPlaceElementException {
+    public GridIndex getGridIndex(Coord x, Coord y) throws CannotPutElementException {
         if (x.between(firstColumnCoord1, firstColumnCoord2) && y.between(firstRowCoord1, firstRowCoord2))
             return new GridIndex(0, 0);
         if (x.between(secondColumnCoord1, secondColumnCoord2) && y.between(firstRowCoord1, firstRowCoord2))
@@ -114,7 +83,7 @@ public class Window {
         if (x.between(thirdColumnCoord1, thirdColumnCoord2) && y.between(thirdRowCoord1, thirdRowCoord2))
             return new GridIndex(2, 2);
 
-        throw new CannotPlaceElementException("no element to display at these coords");
+        throw new CannotPutElementException("no element to display at these coords");
     }
 
     private void addAll() {
@@ -160,6 +129,7 @@ public class Window {
         addAll(rectangles);
     }
 
+    //generic functions
     private <T extends Shape> void addAll(ArrayList<ArrayList<T>> listOfLists) {
         for (ArrayList<T> list : listOfLists) {
             shapes.addAll(list);
@@ -172,10 +142,22 @@ public class Window {
         }
     }
 
-    private class CannotPlaceElementException extends Exception {
-        public CannotPlaceElementException(String msg) {
-            super(msg);
-        }
+    //nie wiem dlaczego polimorfizm tak nie dziala, ale chcialem zaimplementowac
+    //wzorzec strategii
+    public void update(int i, int j, Circle element) {
+        this.circles.get(i).get(j).setVisible(true);
     }
+
+    public void update(int i, int j, Rectangle element) {
+        this.rectangles.get(i).get(j).setVisible(true);
+    }
+
+    public <T extends Shape> void update(int i, int j, T element) {
+        if (element instanceof Circle)
+            this.circles.get(i).get(j).setVisible(true);
+        else if (element instanceof Rectangle)
+            this.rectangles.get(i).get(j).setVisible(true);
+    }
+
 }
 

@@ -1,35 +1,56 @@
 package main.model;
 
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import lombok.Data;
-import org.springframework.context.annotation.Bean;
+import main.controller.Window;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
 
 @Data
 @Repository
 public class Game {
-    private Turn turn = Turn.CIRCLE;
-    private Shape[][] array = new Shape[3][3];
+    private Turn turn;
+    private Board board;
 
-    public void switchTurn() {
+    @Autowired
+    Player player;
+
+    @Autowired
+    Window window;
+
+    public Game() {
+        this.turn = Turn.CIRCLE;
+    }
+
+    @PostConstruct
+    void init() {
+        this.board = new Board(window);
+    }
+
+    private void switchTurn() {
         if (this.getTurn() == Turn.CIRCLE) {
             this.turn = Turn.RECTANGLE;
         } else this.turn = Turn.CIRCLE;
     }
 
-    public void setElement(int i, int j, Shape element) {
-        this.array[i][j] = element;
+    private <T extends Shape> T getItemForPlayer() {
+        return (T) player.getPlayersShape();
     }
 
-    public Shape getElement(int i, int j) {
-        return this.array[i][j];
-    }
-
-    public void setElement(GridIndex gridIndex, Shape toChange) {
-        this.setElement(gridIndex.getI(), gridIndex.getJ(), toChange);
+    public <T extends Shape> void putItemOnBoard(Coord x, Coord y) {
+        try {
+            GridIndex gridIndex = window.getGridIndex(x, y);
+            player.checkIfCanPutElement(this.turn);
+            Shape toPut = getItemForPlayer();
+            board.checkIfOccupied(gridIndex);
+            board.setElement(gridIndex, toPut);
+            switchTurn();
+        } catch (CannotPutElementException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
