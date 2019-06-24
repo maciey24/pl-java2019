@@ -15,6 +15,7 @@ import javax.annotation.PostConstruct;
 public class Game {
     private Turn turn;
     private Board board;
+    private TicTacToeRule ticTacToeRule;
 
     @Autowired
     Player player;
@@ -24,6 +25,7 @@ public class Game {
 
     public Game() {
         this.turn = Turn.CIRCLE;
+        this.ticTacToeRule = new TicTacToeRule();
     }
 
     @PostConstruct
@@ -32,13 +34,14 @@ public class Game {
     }
 
     private void switchTurn() {
+        if (this.turn == null) return;
         if (this.getTurn() == Turn.CIRCLE) {
             this.turn = Turn.RECTANGLE;
         } else this.turn = Turn.CIRCLE;
     }
 
     private <T extends Shape> T getItemForPlayer() {
-        return (T) player.getPlayersShape();
+        return (T) player.getPlayersShape(turn);
     }
 
     public <T extends Shape> void putItemOnBoard(Coord x, Coord y) {
@@ -48,9 +51,18 @@ public class Game {
             Shape toPut = getItemForPlayer();
             board.checkIfOccupied(gridIndex);
             board.setElement(gridIndex, toPut);
+            checkWinCondition();
             switchTurn();
         } catch (CannotPutElementException e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    private void checkWinCondition() {
+        Shape result = this.ticTacToeRule.checkWhoWon(board);
+        if (result != null) {
+            System.out.println("WINNER: " + result.getClass().getSimpleName());
+            this.turn = null;
         }
     }
 }

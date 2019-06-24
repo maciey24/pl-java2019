@@ -16,11 +16,20 @@ public class Player {
     }
 
     public <T extends Shape> T getPlayersShape() {
-        if (playerSign.equals(Turn.CIRCLE)) return (T) new Circle();
+        if (playerSign.equals(Turn.CIRCLE))
+            return (T) new Circle();
+        else return (T) new Rectangle();
+    }
+
+    //for offline debug
+    public <T extends Shape> T getPlayersShape(Turn turn) {
+        if (turn.equals(Turn.CIRCLE))
+            return (T) new Circle();
         else return (T) new Rectangle();
     }
 
     public void checkIfCanPutElement(Turn turn) throws CannotPutElementException {
+        if (turn == null) throw new CannotPutElementException("the game is over already");
 //        if(!turn.equals(playerSign)) throw new CannotPutElementException("it's not your turn!");
     }
 }

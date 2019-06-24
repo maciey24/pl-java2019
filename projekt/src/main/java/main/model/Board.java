@@ -4,7 +4,7 @@ import javafx.scene.shape.Shape;
 import main.controller.Window;
 
 public class Board {
-    private Shape[][] array;
+    Shape[][] array;
     private Window window;
 
     Board(Window window) {
@@ -13,7 +13,7 @@ public class Board {
         this.window = window;
     }
 
-    private  <T extends Shape> void setElement(int i, int j, T element) throws CannotPutElementException {
+    private  <T extends Shape> void setElement(int i, int j, T element) {
         this.array[i][j] = element;
         //observer notify
         window.update(i, j, element);
